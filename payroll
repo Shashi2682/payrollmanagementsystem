@@ -1,0 +1,47 @@
+from tkinter import *
+import mysql.connector as mysql
+import tkinter.messagebox as MessageBox
+
+root=Tk()
+root.geometry("1000x1000")
+def connect_database():
+    print("accepted")
+def insert():
+    Name_=name.get()
+    id=id.get()
+    join_=joine.get()
+
+    if(Name=="" or id=="" or join==""):
+        MessageBox.showinfo("Insert status","All fields are required")
+    else:
+    //enter your database password
+        con = mysql.connect(host="localhost",user="root",password="******",database="payroll")
+        cursor = con.cursor()
+        cursor.execute("insert into personal_data values('"+ Name_ +"','"+ id  +"','"+ join_ +"')")
+        coursor.execute("commit");
+
+        MessageBox.showinfo("Insert status","Inserted succesfully");
+        con.close();
+#tittle
+Label(root,text="Payroll Management system", font="arial 18",fg="white",bg="blue").place(x=300,y=0)
+
+#personal data
+Label(root,text="Personal Data",font="arial 18",fg="blue").place(x=1,y=35)
+Name_=Label(root,text="Name",font="arial 14")
+Name_.place(x=10,y=75)
+id=Label(root,text="Id No",font="arial 14")
+id.place(x=10,y=110)
+Name_= StringVar
+name=Entry(root).place(x=100,y=75)
+id=StringVar
+id=Entry(root).place(x=100,y=110)
+join_=Label(root,text="Joining date",font="arial 14")
+join_.place(x=10,y=145)
+joine=Entry(root).place(x=120,y=148)
+
+
+#submitbutton
+submit=Button(root,text="insert",command=insert,font="arial 22").place(x=350,y=570)
+
+
+root.mainloop()
